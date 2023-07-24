@@ -1,6 +1,4 @@
-<?php
-    require_once '../frontend/header.php';
-?>
+<?php require_once '../frontend/header.php'; ?>
 <h1>Login Form</h1>
 <br><br>
 <p>
@@ -18,6 +16,4 @@
 
         <input type="submit" value="Login">
     </form>
-<?php
-    require_once '../frontend/footer.php';
-?>
+<?php require_once '../frontend/footer.php'; ?>
