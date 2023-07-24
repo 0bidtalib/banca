@@ -11,6 +11,6 @@
         $_SESSION['userID'] = $row['id'];
         header("location: http://localhost/Progetto/frontend/index.php");
     } else {
-        echo "0 results";
+        echo "No user found, or you entered wrong credentials";
     }
 ?>
