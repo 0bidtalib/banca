@@ -1,9 +1,12 @@
 <?php
-    require_once '../frontend/header.php';
-    require_once '../backend/conn.php';
-
-    $sql = 'SELECT * FROM categorie';
-    $result = $conn->query($sql);
+    if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+        require_once '../frontend/header.php';
+        require_once '../backend/conn.php';
+        $sql = 'SELECT * FROM categorie';
+        $result = $conn->query($sql);
+    } else {
+        echo 'You cannot access this page because you are not ADMIN';
+    }
 ?>
 <h1>Categorie</h1>
 <br>
