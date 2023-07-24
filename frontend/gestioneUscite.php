@@ -1,7 +1,4 @@
 <?php
-
-use function PHPSTORM_META\elementType;
-
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
 
