@@ -1,9 +1,9 @@
 <?php
+    require_once '../frontend/header.php';
+    require_once '../backend/conn.php';
     if (!$_SESSION['logged']) {
         header("location: http://localhost/Progetto/frontend/login.php");
     }
-    require_once '../frontend/header.php';
-    require_once '../backend/conn.php';
     if ($_SESSION['user']=='admin' && $_SESSION['userID']==5 ) {
         $sqlEnt = "SELECT * FROM entrate WHERE inizio_periodo>='2023/06/01' AND fine_periodo<='2023/06/30'";
         $sqlUsc = "SELECT * FROM uscite WHERE data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";

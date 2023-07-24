@@ -1,7 +1,7 @@
 <?php
+    require_once '../frontend/header.php';
+    require_once '../backend/conn.php';
     if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
-        require_once '../frontend/header.php';
-        require_once '../backend/conn.php';
         $sql = 'SELECT * FROM categorie';
         $result = $conn->query($sql);
     } else {
