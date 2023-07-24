@@ -1,7 +1,6 @@
 <?php
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
-
     if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
         $sql = "SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
     } else {
