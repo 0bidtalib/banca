@@ -1,12 +1,4 @@
-<?php
-    require_once '../frontend/header.php';
-
-    // if ($http_response_header==1) {
-    //     echo "L'inserimento e andato a buon fine.";
-    // } else if ($http_response_header==0) {
-    //     echo "Qualcosa e andato storto.";
-    // }
-?>
+<?php require_once '../frontend/header.php'; ?>
     <h1>Inserimento stipendio</h1>
     <h4>inserisci lo stipendio che ricevuto:</h4>
     <form action="http://localhost/Progetto/backend/insertStipendio.php" method="post">
