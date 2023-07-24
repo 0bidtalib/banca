@@ -1,6 +1,4 @@
-<?php
-    require_once '../frontend/header.php';
-?>
+<?php require_once '../frontend/header.php'; ?>
 <h1>Login Form</h1>
 <br><br>
 <p>
@@ -9,7 +7,6 @@
 </p>
 <br><br>
     <form action="http://localhost/Progetto/backend/register.php" method="post">
-    
         <label for="nome">Nome:</label>
         <input type="text" name="nome" placeholder="ex. Mario"><br><br>
 
@@ -27,6 +24,4 @@
 
         <input type="submit" value="Register">
     </form>
-<?php
-    require_once '../frontend/footer.php';
-?>
+<?php require_once '../frontend/footer.php'; ?>
