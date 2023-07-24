@@ -4,6 +4,7 @@
     if ($conn->query($sql) === 'true') {
         header("location: http://localhost/Progetto/frontend/insertStipendio.php");
     } else {
-        echo "something went wrong while inserting...";
+        echo "something went wrong while inserting...<br>";
+        echo $sql;
     }
 ?>
