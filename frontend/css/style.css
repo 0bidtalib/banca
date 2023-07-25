@@ -4,12 +4,23 @@
 }
 
 body {
-    background-color: #9b9494;
+    background: rgb(58, 57, 57);
+    color: gray;
 }
 
 a {
-    color: rgb(86, 79, 79);
+    color: gray;
     text-decoration: none;
+}
+
+input {
+    background: rgb(58, 57, 57);
+    color: gray;
+    font-size: 16px;
+}
+
+input:focus {
+    border: 3px solid rgb(58, 57, 57);
 }
 
 .headings {
