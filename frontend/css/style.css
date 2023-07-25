@@ -5,17 +5,17 @@
 
 body {
     background: rgb(58, 57, 57);
-    color: gray;
+    color: rgb(193, 187, 187);
 }
 
 a {
-    color: gray;
+    color: rgb(193, 187, 187);
     text-decoration: none;
 }
 
 input {
     background: rgb(58, 57, 57);
-    color: gray;
+    color: rgb(193, 187, 187);
     font-size: 16px;
 }
 

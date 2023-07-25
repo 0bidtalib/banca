@@ -2,12 +2,12 @@
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
     if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
-        $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id WHERE inizio_periodo>='2023/06/01' AND fine_periodo<='2023/06/30'";
-        $result = $conn->query($sql);
+        $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id WHERE inizio_periodo>='2023/06/01'";
     } else {
-        $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01' AND fine_periodo<='2023/06/30'";
-        $result = $conn->query($sql);
+        $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01'";
     }
+
+    $result = $conn->query($sql);
     
     $totale = 0;
 ?>
@@ -15,6 +15,7 @@
     <table>
         <thead>
             <th class="headings">Stipendio</th>
+            <th class="headings">Descrizione</th>
             <th class="headings">Inizio periodo</th>
             <th class="headings">Fine periodo</th>
             <?php
@@ -32,6 +33,7 @@
             <tr>
                 <!-- <td><?php //echo $row["id"] ?></td> -->
                 <td><?php echo $row["stipendio"];?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><?php echo $row["descrizione"];?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?php echo $row["inizio_periodo"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?php echo $row["fine_periodo"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <?php
