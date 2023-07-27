@@ -4,7 +4,7 @@
     if (!$_SESSION['logged']) {
         header("location: http://localhost/Progetto/frontend/login.php");
     }
-    if ($_SESSION['user']=='admin' && $_SESSION['userID']==5 ) {
+    if ($_SESSION['isadmin']) {
         $sqlEnt = "SELECT * FROM entrate WHERE inizio_periodo>='2023/06/01'";
         $sqlUsc = "SELECT * FROM uscite WHERE data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
     } else {
