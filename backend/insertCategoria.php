@@ -1,6 +1,6 @@
 <?php
     require_once '../backend/conn.php';
-    if ($_SESSION['user'] == 'admin' && $_SESSION['userID'] == 5 ) {
+    if ($_SESSION['isadmin']) {
         $sql = 'INSERT INTO categorie(descrizione, key_word) VALUES ("'.$_GET['descrizione'].'", key_word="'.$_GET['key_word'].'")';
         if ($conn->query($sql) === true) {
             header("location: http://localhost/Progetto/frontend/categorie.php");

@@ -36,7 +36,7 @@
     <a href="http://localhost/Progetto/frontend/gestioneEntrate.php">Gestione entrate</a><br><br>
     <a href="http://localhost/Progetto/frontend/gestioneUscite.php">Gestione uscite</a><br><br>
     <?php
-        if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+        if ($_SESSION['isadmin']) {
             echo '<a href="http://localhost/Progetto/frontend/categorie.php">Categorie</a><br><br>';
         }
     ?>

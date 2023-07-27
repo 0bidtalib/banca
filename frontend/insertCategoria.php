@@ -1,4 +1,10 @@
-<?php require_once '../frontend/header.php'; ?>
+<?php
+    require_once '../frontend/header.php';
+    require_once '../backend/conn.php';
+    if (!$_SESSION['isadmin']) {
+        echo 'You are not allowed to access this page.';
+    }
+?>
 <h1>Creazione categoria</h1>
 <br>
 <form action="http://localhost/Progetto/backend/insertCategoria.php" method="get">

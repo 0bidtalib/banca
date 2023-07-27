@@ -1,14 +1,12 @@
 <?php
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
-    if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+    if ($_SESSION['isadmin']) {
         $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id WHERE inizio_periodo>='2023/06/01'";
     } else {
         $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01'";
     }
-
     $result = $conn->query($sql);
-    
     $totale = 0;
 ?>
     <h1>Gestione dello stipendio</h1>
@@ -19,7 +17,7 @@
             <th class="headings">Inizio periodo</th>
             <th class="headings">Fine periodo</th>
             <?php
-                if($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+                if($_SESSION['isadmin']) {
                     echo "<th class='headings'>Utente</th>";
                 }
             ?>
@@ -37,7 +35,7 @@
                 <td><?php echo $row["inizio_periodo"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?php echo $row["fine_periodo"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <?php
-                    if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+                    if ($_SESSION['isadmin']) {
                         echo '<td>'.$row["nome"].' '.$row['cognome'].' (id = <b>'.$row['id_utente'].'</b>)</td>';
                     }
                  ?>

@@ -7,6 +7,7 @@
         $_SESSION['logged'] = true;
         $_SESSION['user'] = $row['username'];
         $_SESSION['userID'] = $row['id'];
+        ($row['ruolo'] == 1) ? $_SESSION['isadmin'] = true : $_SESSION['isadmin'] = false;
         header("location: http://localhost/Progetto/frontend/index.php");
     } else {
         echo "No user found or you entered wrong credentials";

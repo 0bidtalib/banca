@@ -1,7 +1,7 @@
 <?php
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
-    if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+    if ($_SESSION['isadmin']) {
         $sql = 'SELECT * FROM categorie';
         $result = $conn->query($sql);
     } else {
@@ -13,7 +13,7 @@
 <a href="http://localhost/Progetto/frontend/insertCategoria.php">Crea una categoria</a>
 <br><br>
 <a href="http://localhost/Progetto/frontend/index.php">Back</a>
-<br>
+<br><br>
 <table>
     <thead>
         <th class="headings">ID</th>

@@ -1,7 +1,7 @@
 <?php
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
-    if ($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+    if ($_SESSION['isadmin']) {
         $sql = "SELECT uscite.*, loginfo.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id INNER JOIN loginfo ON uscite.utente = loginfo.id WHERE data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
     } else {
         $sql = "SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE utente=".$_SESSION['userID']." AND data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
@@ -52,7 +52,7 @@
             <th class="headings">Descrizione</th>
             <th class="headings">Categoria</th>
             <?php
-                if($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+                if ($_SESSION['isadmin']) {
                     echo "<th class='headings'>Utente</th>";
                 }
             ?>
@@ -68,7 +68,7 @@
                 <td><?php echo $row["descrizione"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?php echo $row["cat_id"].'-'.$row["cat_desc"]; ?></td>
                 <?php
-                    if($_SESSION['user']=='admin' && $_SESSION['userID']==5) {
+                    if ($_SESSION['isadmin']) {
                         echo "<td>".$row['username']."</td>";
                     }
                 ?>
