@@ -72,10 +72,7 @@
                         echo "<td>".$row['username']."</td>";
                     }
                 ?>
-                <?php
-                    $url = urlencode('idMod='.$row['id'].'&dataMod="'.$row["data"].'"&importoMod='.$row["importo"].'&descMod="'.$row["descrizione"].'"');
-                ?>
-                <!-- <td><a href="modificaUscita.php?<?php //echo $url; ?>">Modifica</a></td> -->
+                <td><a href="eliminaUscita.php?idUscita=<?php echo $row['id'] ?>">Elimina</a></td>
             </tr>
         <?php } ?>
     </tbody>
