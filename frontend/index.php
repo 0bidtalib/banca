@@ -24,22 +24,33 @@
         $totUscite += $row["importo"];
     }
 ?>
-    <h1>Home page</h1>
+    <div class="testa">
+        <div class="title">
+            <h1>Home page</h1>
+        </div>
+        <div class="greetings">
+            <?php if ($_SESSION['logged']) { ?>
+                <h3>Entrate: <?php echo $totEntrate ?> €</h3>
+                <h3>Uscite: <?php echo $totUscite ?> €</h3>
+                <h4><a href="http://localhost/Progetto/frontend/profilo.php"><?php echo $_SESSION['user'] ?></a></h4>
+                <h4 class="log-out"><a href="http://localhost/Progetto/backend/logout.php">Log out</a></h4>
+            <?php } ?>
+        </div>
+    </div>
     
-    <?php
-        if ($_SESSION['logged']) {
-            echo '<br><br><h4>Welcome '. $_SESSION['user'] .'</h4><br><br>';
-            echo '<h3>Totale entrate: ' . $totEntrate . ' €</h3><br>';
-            echo '<h3>Totale uscite: ' . $totUscite . ' €</h3><br><br>';
-        }
-    ?>
-    <a href="http://localhost/Progetto/frontend/gestioneEntrate.php">Gestione entrate</a><br><br>
-    <a href="http://localhost/Progetto/frontend/gestioneUscite.php">Gestione uscite</a><br><br>
-    <?php
-        if ($_SESSION['isadmin']) {
-            echo '<a href="http://localhost/Progetto/frontend/categorie.php">Categorie</a><br><br>';
-        }
-    ?>
-    <br>
-    <a href="http://localhost/Progetto/backend/logout.php">Log out</a>
+    <div class="body">
+        <div class="btns">
+            <div class="btn">
+                <a href="http://localhost/Progetto/frontend/gestioneEntrate.php">Gestione entrate</a>
+            </div>
+            <div class="btn">
+                <a href="http://localhost/Progetto/frontend/gestioneUscite.php">Gestione uscite</a>
+            </div>
+        </div>
+        <?php
+            if ($_SESSION['isadmin']) {
+                echo '<a href="http://localhost/Progetto/frontend/categorie.php">Categorie</a><br><br>';
+            }
+        ?>
+    </div>
 <?php require_once '../frontend/footer.php'; ?>

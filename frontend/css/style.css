@@ -4,6 +4,10 @@
 }
 
 body {
+    /* display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center; */
     background: rgb(58, 57, 57);
     color: rgb(193, 187, 187);
 }
@@ -26,4 +30,62 @@ input:focus {
 .headings {
     font-size: 18px;
     text-align: left;
+}
+
+.testa {
+    background-color: rgb(84, 94, 122);
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.testa .title {
+    /* background-color: red; */
+}
+
+.testa .greetings {
+    /* background-color: red; */
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.body {
+    position: absolute;
+    /* padding: 5px 100px 0 100px; */
+}
+
+.body .btns {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.body .btns .btn {
+    position: relative;
+    top: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgb(55, 74, 88);
+}
+
+.log-out {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgb(0, 76, 130);
+}
+
+.back {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgb(166, 40, 40);
+}
+
+.insert {
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgb(0, 135, 0);
 }

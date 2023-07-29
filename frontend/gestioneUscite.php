@@ -13,7 +13,9 @@
     }
     $result = $conn->query($sql);
 ?>
-    <h1>Gestione uscite</h1>
+    <div class="title">
+        <h1>Gestione uscite</h1>
+    </div>
     <br>
     <a href="http://localhost/Progetto/frontend/insertUscita.php">Inserisci uscita</a>
     <br><br>
@@ -66,7 +68,7 @@
                 <td><?php echo $row["data"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?php echo $row["importo"]; ?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td><?php echo $row["descrizione"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["cat_id"].'-'.$row["cat_desc"]; ?></td>
+                <td><?php echo $row["cat_id"].'-'.$row["cat_desc"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <?php
                     if ($_SESSION['isadmin']) {
                         echo "<td>".$row['username']."</td>";

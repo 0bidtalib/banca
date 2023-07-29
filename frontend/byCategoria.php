@@ -28,7 +28,9 @@
     }
     $result = $conn->query($sql);
 ?>
-    <h1>Gestione uscite per categoria</h1>
+    <div class="title">
+        <h1>Gestione uscite per categoria</h1>
+    </div>
     <br>
     <h3>Categoria:
     <?php 

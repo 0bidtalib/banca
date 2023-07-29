@@ -5,7 +5,9 @@
         echo 'You are not allowed to access this page.';
     }
 ?>
-<h1>Creazione categoria</h1>
+    <div class="title">
+        <h1>Creazione categoria</h1>
+    </div>
 <br>
 <form action="http://localhost/Progetto/backend/insertCategoria.php" method="get">
     

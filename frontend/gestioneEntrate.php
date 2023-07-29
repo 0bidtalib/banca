@@ -9,7 +9,20 @@
     $result = $conn->query($sql);
     $totale = 0;
 ?>
-    <h1>Gestione dello stipendio</h1>
+    <div class="testa">
+        <div class="title">
+            <h1>Gestione dello stipendio</h1>
+        </div>
+
+        <div class="insert">
+            <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>
+        </div>
+
+        <div class="back">
+            <a href="http://localhost/Progetto/frontend/index.php">back</a>
+        </div>
+    </div>
+    
     <table>
         <thead>
             <th class="headings">Stipendio</th>
@@ -46,8 +59,4 @@
     </table>
     <br><br>
     <h2>Totale: <?php echo $totale?> €</h2>
-    <br><br>
-    <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>
-    <br><br>
-    <a href="http://localhost/Progetto/frontend/index.php">back</a>
 <?php require_once '../frontend/footer.php'; ?>
