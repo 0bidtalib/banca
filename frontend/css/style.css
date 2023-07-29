@@ -4,10 +4,6 @@
 }
 
 body {
-    /* display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center; */
     background: rgb(58, 57, 57);
     color: rgb(193, 187, 187);
 }
@@ -38,15 +34,9 @@ input:focus {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
-}
-
-.testa .title {
-    /* background-color: red; */
 }
 
 .testa .greetings {
-    /* background-color: red; */
     width: 40%;
     display: flex;
     justify-content: space-around;
@@ -55,7 +45,6 @@ input:focus {
 
 .body {
     position: absolute;
-    /* padding: 5px 100px 0 100px; */
 }
 
 .body .btns {
@@ -67,9 +56,18 @@ input:focus {
 .body .btns .btn {
     position: relative;
     top: 20px;
-    padding: 15px;
     border-radius: 20px;
     background-color: rgb(55, 74, 88);
+}
+
+.body .btns .btn > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: 50px;
+    width: 150px;
 }
 
 .log-out {

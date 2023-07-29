@@ -13,71 +13,74 @@
     }
     $result = $conn->query($sql);
 ?>
-    <div class="title">
-        <h1>Gestione uscite</h1>
+    <div class="testa">
+        <div class="title">
+            <h1>Gestione uscite</h1>
+        </div>
+        <div class="greetings">
+            <h2>Totale: <?php echo $totale; ?> €</h2>
+            <div class="insert">
+                <a href="http://localhost/Progetto/frontend/insertUscita.php">Inserisci uscita</a>
+            </div>
+            <div class="back">
+                <a href="http://localhost/Progetto/frontend/index.php">back</a>
+            </div>
+        </div>
     </div>
-    <br>
-    <a href="http://localhost/Progetto/frontend/insertUscita.php">Inserisci uscita</a>
-    <br><br>
-    <a href="http://localhost/Progetto/frontend/index.php">back</a>
-    <br><br>
-    <h2>Totale: <?php echo $totale; ?> €</h2>
-    <br>
-    
-    <form action="../frontend/byCategoria.php" method="get">
-        <h4>&nbsp;Selezione per categoria:</h4>
-        <select name="categoria">
-            <?php
-                $sql_categorie = 'SELECT * FROM categorie';
-                $res_cat = $conn->query($sql_categorie);
-                while ($row_cat = $res_cat->fetch_assoc()) {
-            ?>
-                <option value=<?php echo $row_cat['id'] ?>><?php echo $row_cat['key_word'] ?></option>
-            <?php } ?>
-        </select>
-        <br><br>
-        <h3>&nbsp;o/e data:</h3>
-        <label for="filtroDataDal">Data dal:</label>
-        <input type="date" name="filtroDataDal">
-        <br><br>
-        <label for="filtroDataAl">data al:</label>
-        <input type="date" name="filtroDataAl">
-        <br><br>
-        <input type="submit" value="Cerca">
-    </form>
-    
-    <br>
-    <table>
-        <thead>
-            <th class="headings">Data</th>
-            <th class="headings">Importo</th>
-            <th class="headings">Descrizione</th>
-            <th class="headings">Categoria</th>
-            <?php
-                if ($_SESSION['isadmin']) {
-                    echo "<th class='headings'>Utente</th>";
-                }
-            ?>
-        </thead>
-        <tbody>
-        <?php
-            while ($row = $result->fetch_assoc()) {
-                $totale += $row['importo'];
-        ?>
-            <tr>
-                <td><?php echo $row["data"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["importo"]; ?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["descrizione"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["cat_id"].'-'.$row["cat_desc"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+    <div class="body">
+        <form action="../frontend/byCategoria.php" method="get">
+            <h4 class="greetings">Selezione per categoria:</h4>
+            <select name="categoria">
+                <?php
+                    $sql_categorie = 'SELECT * FROM categorie';
+                    $res_cat = $conn->query($sql_categorie);
+                    while ($row_cat = $res_cat->fetch_assoc()) {
+                ?>
+                    <option value=<?php echo $row_cat['id'] ?>><?php echo $row_cat['key_word'] ?></option>
+                <?php } ?>
+            </select>
+            <br><br>
+            <h3>&nbsp;o/e data:</h3>
+            <label for="filtroDataDal">Data dal:</label>
+            <input type="date" name="filtroDataDal">
+            <br><br>
+            <label for="filtroDataAl">data al:</label>
+            <input type="date" name="filtroDataAl">
+            <br><br>
+            <input type="submit" value="Cerca">
+        </form>
+        <table>
+            <thead>
+                <th class="headings">Data</th>
+                <th class="headings">Importo</th>
+                <th class="headings">Descrizione</th>
+                <th class="headings">Categoria</th>
                 <?php
                     if ($_SESSION['isadmin']) {
-                        echo "<td>".$row['username']."</td>";
+                        echo "<th class='headings'>Utente</th>";
                     }
                 ?>
-                <td><a href="eliminaUscita.php?idUscita=<?php echo $row['id'] ?>">Elimina</a></td>
-            </tr>
-        <?php } ?>
-    </tbody>
-    </table>
-    <br>
+            </thead>
+            <tbody>
+            <?php
+                while ($row = $result->fetch_assoc()) {
+                    $totale += $row['importo'];
+            ?>
+                <tr>
+                    <td><?php echo $row["data"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><?php echo $row["importo"]; ?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><?php echo $row["descrizione"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><?php echo $row["cat_id"].'-'.$row["cat_desc"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <?php
+                        if ($_SESSION['isadmin']) {
+                            echo "<td>".$row['username']."</td>";
+                        }
+                    ?>
+                    <td><a href="eliminaUscita.php?idUscita=<?php echo $row['id'] ?>">Elimina</a></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+        </table>
+    </div>
 <?php require_once '../frontend/footer.php'; ?>

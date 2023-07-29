@@ -46,11 +46,14 @@
             <div class="btn">
                 <a href="http://localhost/Progetto/frontend/gestioneUscite.php">Gestione uscite</a>
             </div>
+            <?php if ($_SESSION['isadmin']) { ?>
+                <div class="btn">
+                    <a href="http://localhost/Progetto/frontend/gestioneprestiti.php">Gestione prestiti</a>
+                </div>
+                <div class="btn">
+                    <a href="http://localhost/Progetto/frontend/categorie.php">Categorie</a>
+                </div>
+            <?php } ?>
         </div>
-        <?php
-            if ($_SESSION['isadmin']) {
-                echo '<a href="http://localhost/Progetto/frontend/categorie.php">Categorie</a><br><br>';
-            }
-        ?>
     </div>
 <?php require_once '../frontend/footer.php'; ?>
