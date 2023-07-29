@@ -77,13 +77,54 @@ input:focus {
 }
 
 .back {
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     padding: 10px;
-    border-radius: 12px;
+    border-radius: 20px;
     background-color: rgb(166, 40, 40);
 }
 
 .insert {
-    padding: 15px;
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px;
     border-radius: 20px;
     background-color: rgb(0, 135, 0);
+}
+
+.table-upper  {
+    position: relative;
+    top: 12px;
+    margin: 0 30px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body .tabella {
+    position: relative;
+    top: 20px;
+    padding: 0 30px 0 30px;
+    width: 100vw;
+}
+
+.body .tabella > thead {
+    background-color: rgb(94, 83, 66);
+}
+
+.body .tabella > thead th {
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 10px;
+}
+
+.body .tabella > tbody td {
+    border: solid black 1px;
+    padding: 8px 0 8px 5px;
 }

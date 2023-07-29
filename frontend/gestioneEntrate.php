@@ -8,55 +8,50 @@
     }
     $result = $conn->query($sql);
     $totale = 0;
+    $res = $conn->query($sql);
+    while ($r = $res->fetch_assoc()) {
+        $totale += $r['stipendio'];
+    }
 ?>
     <div class="testa">
         <div class="title">
             <h1>Gestione dello stipendio</h1>
         </div>
 
-        <div class="insert">
-            <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>
+        <div class="greetings">
+            <h2>Totale: <?php echo $totale?> €</h2>
         </div>
+    </div>
 
+    <div class="table-upper">
         <div class="back">
             <a href="http://localhost/Progetto/frontend/index.php">back</a>
         </div>
+        <div class="insert">
+            <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>
+        </div>
     </div>
     
-    <table>
-        <thead>
-            <th class="headings">Stipendio</th>
-            <th class="headings">Descrizione</th>
-            <th class="headings">Inizio periodo</th>
-            <th class="headings">Fine periodo</th>
-            <?php
-                if($_SESSION['isadmin']) {
-                    echo "<th class='headings'>Utente</th>";
-                }
-            ?>
-        </thead>
-        <tbody>
-        
-        <?php
-            while($row = $result->fetch_assoc()) {
-                $totale = $row["stipendio"] + $totale;
-        ?>
-            <tr>
-                <!-- <td><?php //echo $row["id"] ?></td> -->
-                <td><?php echo $row["stipendio"];?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["descrizione"];?> €&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["inizio_periodo"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><?php echo $row["fine_periodo"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <?php
-                    if ($_SESSION['isadmin']) {
-                        echo '<td>'.$row["nome"].' '.$row['cognome'].' (id = <b>'.$row['id_utente'].'</b>)</td>';
-                    }
-                 ?>
-            </tr>
-        <?php } ?>
-        
-    </tbody>
-    </table>
-    <br><br>
-    <h2>Totale: <?php echo $totale?> €</h2>
+    <div class="body">
+        <table class="tabella">
+            <thead>
+                <th class="headings">Stipendio</th>
+                <th class="headings">Descrizione</th>
+                <th class="headings">Inizio periodo</th>
+                <th class="headings">Fine periodo</th>
+                <?php echo ($_SESSION['isadmin']) ? "<th class='headings'>Utente</th>" : '' ?>
+            </thead>
+            <tbody>
+                <?php while($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                        <td><?php echo $row["stipendio"];?> €</td>
+                        <td><?php echo $row["descrizione"];?> €</td>
+                        <td><?php echo $row["inizio_periodo"]; ?></td>
+                        <td><?php echo $row["fine_periodo"]; ?></td>
+                        <?php echo ($_SESSION['isadmin']) ? '<td>'.$row["nome"].' '.$row['cognome'].' (id = <b>'.$row['id_utente'].'</b>)</td>' : '' ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 <?php require_once '../frontend/footer.php'; ?>
