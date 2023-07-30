@@ -43,10 +43,6 @@ input:focus {
     align-items: center;
 }
 
-.body {
-    position: absolute;
-}
-
 .body .btns {
     width: 100vw;
     display: flex;

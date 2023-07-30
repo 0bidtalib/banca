@@ -1,0 +1,96 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background: rgb(58, 57, 57);
+    color: rgb(193, 187, 187);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    position: absolute;
+    background-color: gray;
+    min-width: 40%;
+    height: 70%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form .haeder {
+    position: absolute;
+    top: 0;
+}
+
+.login-form .body .username {
+    margin-bottom: 20px;
+}
+
+.login-form .body .username input {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid red 2px;
+    border-radius: 10px;
+    width: 250px;
+    height: 30px;
+}
+
+.login-form .body .username input::placeholder {
+    color: white;
+}
+
+.login-form .body .username input:focus {
+    border: none;
+    outline: none;
+}
+
+.login-form .body .password input {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid red 2px;
+    border-radius: 10px;
+    width: 250px;
+    height: 30px;
+}
+
+.login-form .body .password input::placeholder {
+    color: white;
+}
+
+.login-form .body .password input:focus {
+    border: none;
+    outline: none;
+    animation: example 3s forwards;
+}
+
+@keyframes example {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: yellow;
+    }
+}
+
+.login-form .body .login-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.login-form .body .login-btn input {
+    width: 100px;
+    height: 30px;
+}
+
+.login-form .footer {
+    position: absolute;
+    bottom: 0;
+}

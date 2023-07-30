@@ -11,13 +11,11 @@
         $sqlEnt = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01'";
         $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID']." AND data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
     }
-
     $resEnt = $conn->query($sqlEnt);
     $totEntrate = 0;
     while ($row = $resEnt->fetch_assoc()) {
         $totEntrate += $row["stipendio"];
     }
-    
     $resUsc = $conn->query($sqlUsc);
     $totUscite = 0;
     while ($row = $resUsc->fetch_assoc()) {
@@ -37,7 +35,6 @@
             <?php } ?>
         </div>
     </div>
-    
     <div class="body">
         <div class="btns">
             <div class="btn">

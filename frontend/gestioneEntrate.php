@@ -17,22 +17,20 @@
         <div class="title">
             <h1>Gestione dello stipendio</h1>
         </div>
-
         <div class="greetings">
             <h2>Totale: <?php echo $totale?> €</h2>
         </div>
     </div>
 
-    <div class="table-upper">
-        <div class="back">
-            <a href="http://localhost/Progetto/frontend/index.php">back</a>
-        </div>
-        <div class="insert">
-            <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>
-        </div>
-    </div>
-    
     <div class="body">
+        <div class="table-upper">
+            <div class="back">
+                <a href="http://localhost/Progetto/frontend/index.php">back</a>
+            </div>
+            <div class="insert">
+                <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>
+            </div>
+        </div>
         <table class="tabella">
             <thead>
                 <th class="headings">Stipendio</th>
