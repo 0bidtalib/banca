@@ -28,14 +28,20 @@
         </div>
         <div class="greetings">
             <?php if ($_SESSION['logged']) { ?>
-                <h3>Entrate: <?php echo $totEntrate ?> €</h3>
-                <h3>Uscite: <?php echo $totUscite ?> €</h3>
                 <h4><a href="http://localhost/Progetto/frontend/profilo.php"><?php echo $_SESSION['user'] ?></a></h4>
                 <h4 class="log-out"><a href="http://localhost/Progetto/backend/logout.php">Log out</a></h4>
             <?php } ?>
         </div>
     </div>
     <div class="body">
+        <div class="table-upper">
+            <div class="back">
+                <h3>Uscite: <?php echo $totUscite ?> €</h3>
+            </div>
+            <div class="insert">
+                <h3>Entrate: <?php echo $totEntrate ?> €</h3>
+            </div>
+        </div>
         <div class="btns">
             <div class="btn">
                 <a href="http://localhost/Progetto/frontend/gestioneEntrate.php">Gestione entrate</a>

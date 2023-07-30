@@ -3,29 +3,50 @@
     require_once '../backend/conn.php';
     $res = $conn->query('SELECT * FROM categorie');
 ?>
-    <h1>Inserisci Uscita</h1><br>
+    <div class="testa">
+        <div class="title">
+            <h1>Inserisci Uscita</h1>
+        </div>
+    </div>
     
-    <a href="http://localhost/Progetto/frontend/gestioneUscite.php">back</a>
-    <br><br>
-    <h3>Inserisci gli importi di tutte le operazioni:</h3><br>
+    <div class="body">
+        <div class="table-upper">
+            <div class="back">
+                <a href="http://localhost/Progetto/frontend/gestioneUscite.php">back</a>
+            </div>
+        </div>
+        <div style="position: absolute; top: 67px; left: 39%; margin: auto">
+            <h3 style="letter-spacing: 1px;">Inserisci gli importi di tutte le operazioni:</h3><br>
+        </div>
+        <div class="form">
+            <form action="http://localhost/Progetto/backend/insertUscita.php" method="post">
+                <div style="margin-bottom:20px; margin-top: 20px;">
+                    <label for="importo">Importo: </label>
+                    <input type="" name="importo" placeholder="importo">
+                </div>
 
-    <form action="http://localhost/Progetto/backend/insertUscita.php" method="post">
-        <label for="importo">Importo: </label>
-        <input type="" name="importo" placeholder="importo"><br><br>
+                <div style="margin-bottom:20px">
+                    <label for="descrizione">Descrizione:</label>
+                    <input type="text" name="descrizione" placeholder="motivo della transazione">
+                </div>
 
-        <label for="descrizione">Descrizione:</label>
-        <input type="text" name="descrizione" placeholder="motivo della transazione"><br><br>
+                <div style="margin-bottom:20px">
+                    <label for="dataImporto">Data:</label>
+                    <input type="date" name="dataImporto" placeholder="data operazione">
+                </div>
 
-        <label for="dataImporto">Data:</label>
-        <input type="date" name="dataImporto" placeholder="data operazione"><br><br>
+                <div style="margin-bottom:20px">
+                    <select name="categoria">Categoria:
+                        <?php while ($row = $res->fetch_assoc()) { ?>
+                            <option value=<?php echo $row['id'] ?>><?php echo $row['id'] .'->'.$row['key_word']  ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
 
-        <select name="categoria">Categoria:
-            <?php while ($row = $res->fetch_assoc()) { ?>
-                <option value=<?php echo $row['id'] ?>><?php echo $row['id'] .'->'.$row['key_word']  ?></option>
-            <?php } ?>
-        </select><br><br>
-
-        <input type="submit" value="Inserisci"><br><br>
-    </form>
-    <br>
+                <div style="display: flex; justify-content: center;">
+                    <input style="padding: 10px; width:100px; background-color: green; font-weight: bold; letter-spacing: 1px" type="submit" value="Inserisci">
+                </div>
+            </form>
+        </div>
+    </div>
 <?php require_once '../frontend/footer.php'; ?>
