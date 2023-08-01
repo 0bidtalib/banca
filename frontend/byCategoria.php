@@ -16,11 +16,11 @@
     if (strlen($_GET['filtroDataAl']) > 0) {
         $sql = $sql . ' AND data<="'.$_GET['filtroDataAl'].'"';
     }
-    if (strlen($_GET['filtroDataDal']) == 0 && strlen($_GET['filtroDataAl']) == 0) {
-        $_GET['filtroDataDal'] = date('Y-m-01');
-        $_GET['filtroDataAl'] = date('Y-m-d');
-        $sql = $sql . ' AND uscite.data>="'.$_GET['filtroDataDal'].'" AND data<="'.$_GET['filtroDataAl'].'"';
-    }
+    // if (strlen($_GET['filtroDataDal']) == 0 && strlen($_GET['filtroDataAl']) == 0) {
+    //     $_GET['filtroDataDal'] = date('Y-m-01');
+    //     $_GET['filtroDataAl'] = date('Y-m-d');
+    //     $sql = $sql . ' AND uscite.data>="'.$_GET['filtroDataDal'].'" AND data<="'.$_GET['filtroDataAl'].'"';
+    // }
     $res = $conn->query($sql);
     $tot = 0;
     while ($row_temp = $res->fetch_assoc()) {

@@ -6,11 +6,12 @@
     }
     if ($_SESSION['isadmin']) {
         $sqlEnt = "SELECT * FROM entrate WHERE inizio_periodo>='2023/06/01'";
-        $sqlUsc = "SELECT * FROM uscite WHERE data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
+        $sqlUsc = "SELECT * FROM uscite WHERE data>='2023/06/01'"; // ".date('Y-m-01')."' AND data<='".date('Y-m-t')."
     } else {
         $sqlEnt = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01'";
-        $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID']." AND data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
+        $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID']." AND data>='2023/07/01'"; //AND data<='".date('Y-m-t')."'
     }
+    // echo $sqlUsc . '<br>';
     $resEnt = $conn->query($sqlEnt);
     $totEntrate = 0;
     while ($row = $resEnt->fetch_assoc()) {

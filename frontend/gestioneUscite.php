@@ -2,10 +2,11 @@
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
     if ($_SESSION['isadmin']) {
-        $sql = "SELECT uscite.*, loginfo.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id INNER JOIN loginfo ON uscite.utente = loginfo.id WHERE data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
+        $sql = "SELECT uscite.*, loginfo.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id INNER JOIN loginfo ON uscite.utente = loginfo.id WHERE data>='2023/07/01'"; //".date('Y-m-01')."' AND data<='".date('Y-m-t')."
     } else {
-        $sql = "SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE utente=".$_SESSION['userID']." AND data>='".date('Y-m-01')."' AND data<='".date('Y-m-t')."'";
+        $sql = "SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE utente=".$_SESSION['userID']." AND data>='2023/07/01'"; //".date('Y-m-01')."' AND data<='".date('Y-m-t')."
     }
+    // echo $sql . '<br>';
     $result1 = $conn->query($sql);
     $totale = 0;
     while ($row = $result1->fetch_assoc()) {
@@ -53,16 +54,16 @@
                 <?php } ?>
             </tbody>
         </table>
-        <!-- <form action="../frontend/byCategoria.php" method="get">
+        <form action="../frontend/byCategoria.php" method="get">
             <h4 class="greetings">Selezione per categoria:</h4>
             <select name="categoria">
                 <?php
-                    // $sql_categorie = 'SELECT * FROM categorie';
-                    // $res_cat = $conn->query($sql_categorie);
-                    // while ($row_cat = $res_cat->fetch_assoc()) {
+                    $sql_categorie = 'SELECT * FROM categorie';
+                    $res_cat = $conn->query($sql_categorie);
+                    while ($row_cat = $res_cat->fetch_assoc()) {
                 ?>
-                    <option value=<?php //echo $row_cat['id'] ?>><?php //echo $row_cat['key_word'] ?></option>
-                <?php //} ?>
+                    <option value=<?php echo $row_cat['id'] ?>><?php echo $row_cat['key_word'] ?></option>
+                <?php } ?>
             </select>
             <h3>o/e data:</h3>
             <label for="filtroDataDal">Data dal:</label>
@@ -72,6 +73,6 @@
             <input type="date" name="filtroDataAl">
 
             <input type="submit" value="Cerca">
-        </form>-->
+        </form>
     </div>
 <?php require_once '../frontend/footer.php'; ?>
