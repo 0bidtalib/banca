@@ -2,9 +2,9 @@
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
     if ($_SESSION['isadmin']) {
-        $sql = "SELECT uscite.*, loginfo.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id INNER JOIN loginfo ON uscite.utente = loginfo.id ORDER BY uscite.data";
+        $sql = "SELECT uscite.*, loginfo.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id INNER JOIN loginfo ON uscite.utente = loginfo.id WHERE utente=".$_GET['utente']." AND data>='".$_GET['dataDal']."' AND data<= '".$_GET['dataAl']."' ORDER BY uscite.data";
     } else {
-        $sql = "SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE utente=".$_SESSION['userID']. " ORDER BY uscite.data";
+        $sql = "SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE utente=".$_SESSION['userID']. " AND data>='".$_GET['dataDal']."' AND data<= '".$_GET['dataAl']."' ORDER BY uscite.data";
     }
     $result1 = $conn->query($sql);
     $totale = 0;
@@ -25,22 +25,15 @@
     <div class="body">
         <div class="table-upper">
             <div class="back">
-                <a href="http://localhost/Progetto/frontend/index.php">back</a>
+                <a href="http://localhost/Progetto/frontend/gestioneUscite.php">back</a>
             </div>
-            <div class="filter">
-                <form action="http://localhost/Progetto/frontend/gestioneUsciteByFiltro.php" method="get">
-                    Dal: <input type="date" name="dataDal"> Al: <input type="date" name="dataAl">
-                    <select name="utente">
-                    <?php
-                        if ($_SESSION['isadmin']) {
-                            $risultato = $conn->query("SELECT * FROM loginfo");
-                            while ($row = $risultato -> fetch_assoc() ) {
-                    ?>
-                        <option value="<?php echo $row['id'] ?>"><?php echo $row['username'] ?></option>
-                    <?php }} ?>
-                    </select>
-                    <input type="submit" value="Search">
-                </form>
+            <div class="filtro">
+                <h4>Filtro dal: <?php echo $_GET['dataDal'] ?> al: <?php echo $_GET['dataAl'] ?> per il utente:
+                <?php
+                    $res = $conn->query("SELECT * FROM loginfo WHERE id=".$_GET['utente']);
+                    $utente = $res->fetch_assoc();
+                    echo $utente['username']
+                ?></h4>
             </div>
             <div class="insert">
                 <a href="http://localhost/Progetto/frontend/insertUscita.php">Inserisci uscita</a>

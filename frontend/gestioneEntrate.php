@@ -2,9 +2,9 @@
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
     if ($_SESSION['isadmin']) {
-        $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id WHERE inizio_periodo>='2023/06/01'";
+        $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id";
     } else {
-        $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01'";
+        $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID'];
     }
     $result = $conn->query($sql);
     $totale = 0;

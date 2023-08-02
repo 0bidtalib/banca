@@ -32,8 +32,8 @@
             <tbody>
                 <?php while($row = $result->fetch_assoc()) {?>
                     <tr>
-                        <td><?php echo $row['id'] ?>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><?php echo $row['key_word'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['key_word'] ?></td>
                         <td><?php echo $row['descrizione'] ?></td>
                     </tr>
                 <?php } ?>

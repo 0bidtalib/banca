@@ -5,13 +5,12 @@
         header("location: http://localhost/Progetto/frontend/login.php");
     }
     if ($_SESSION['isadmin']) {
-        $sqlEnt = "SELECT * FROM entrate WHERE inizio_periodo>='2023/06/01'";
-        $sqlUsc = "SELECT * FROM uscite WHERE data>='2023/06/01'"; // ".date('Y-m-01')."' AND data<='".date('Y-m-t')."
+        $sqlEnt = "SELECT * FROM entrate";
+        $sqlUsc = "SELECT * FROM uscite";
     } else {
-        $sqlEnt = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='2023/06/01'";
-        $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID']." AND data>='2023/07/01'"; //AND data<='".date('Y-m-t')."'
+        $sqlEnt = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID'];
+        $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID'];
     }
-    // echo $sqlUsc . '<br>';
     $resEnt = $conn->query($sqlEnt);
     $totEntrate = 0;
     while ($row = $resEnt->fetch_assoc()) {
