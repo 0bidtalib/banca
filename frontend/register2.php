@@ -29,5 +29,6 @@
             <div class="footer">
                 <p style="color:chartreuse">Choose your username and password in order to utilize our services.</p>
             </div>
-        </body>
+        </div>
+    </body>
 </html>
