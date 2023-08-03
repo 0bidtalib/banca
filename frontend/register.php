@@ -42,4 +42,5 @@
                 <p>if you're registered: <a href="http://localhost/Progetto/frontend/login.php">Login</a></p>
             </div>
         </div>
-<?php require_once '../frontend/footer.php'; ?>
+    </body>
+</html>
