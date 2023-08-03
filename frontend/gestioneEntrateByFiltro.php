@@ -2,10 +2,11 @@
     require_once '../frontend/header.php';
     require_once '../backend/conn.php';
     if ($_SESSION['isadmin']) {
-        $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id";
+        $sql = "SELECT entrate.*, users.nome, users.cognome, users.id AS id_utente FROM entrate INNER JOIN users ON entrate.utente = users.id WHERE utente=".$_GET['utente']." AND inizio_periodo>='".$_GET['dataDal']."' AND fine_periodo<='".$_GET['dataAl']."'";
     } else {
-        $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID'];
+        $sql = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID']." AND inizio_periodo>='".$_GET['dataDal']."' AND fine_periodo<='".$_GET['dataAl']."'";
     }
+    $sql .= " ORDER BY inizio_periodo";
     $result = $conn->query($sql);
     $totale = 0;
     $res = $conn->query($sql);
@@ -25,22 +26,15 @@
     <div class="body">
         <div class="table-upper">
             <div class="back">
-                <a href="http://localhost/Progetto/frontend/index.php">back</a>
+                <a href="http://localhost/Progetto/frontend/gestioneEntrate.php">back</a>
             </div>
             <div class="filter">
-                <form action="http://localhost/Progetto/frontend/gestioneEntrateByFiltro.php" method="get">
-                    Dal: <input type="date" name="dataDal"> Al: <input type="date" name="dataAl">
-                    <?php
-                        if ($_SESSION['isadmin']) {
-                            echo '<select name="utente">';
-                            $risultato = $conn->query("SELECT * FROM loginfo");
-                            while ($row = $risultato -> fetch_assoc() ) {
-                    ?>
-                        <option value="<?php echo $row['id'] ?>"><?php echo $row['username'] ?></option>
-                    <?php } echo '</select>'; } ?>
-                    
-                    <input type="submit" value="Search">
-                </form>
+                <h4>Filtro dal: <?php echo $_GET['dataDal'] ?> al: <?php echo $_GET['dataAl'] ?> per il utente:
+                <?php
+                    $res = $conn->query("SELECT * FROM loginfo WHERE id=".$_GET['utente']);
+                    $utente = $res->fetch_assoc();
+                    echo $utente['username']
+                ?></h4>
             </div>
             <div class="insert">
                 <a href="http://localhost/Progetto/frontend/insertStipendio.php">Inserisci stipendio</a>

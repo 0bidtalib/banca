@@ -36,10 +36,10 @@
     <div class="body">
         <div class="table-upper">
             <div class="back">
-                <h3>Uscite: <?php echo $totUscite ?> €</h3>
+                Uscite:<h3><?php echo $totUscite ?> €</h3>
             </div>
             <div class="insert">
-                <h3>Entrate: <?php echo $totEntrate ?> €</h3>
+                Entrate:<h3><?php echo $totEntrate ?> €</h3>
             </div>
         </div>
         <div class="btns">
