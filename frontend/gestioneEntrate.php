@@ -53,6 +53,7 @@
                 <th class="headings">Inizio periodo</th>
                 <th class="headings">Fine periodo</th>
                 <?php echo ($_SESSION['isadmin']) ? "<th class='headings'>Utente</th>" : '' ?>
+                <th class="headings"></th>
             </thead>
             <tbody>
                 <?php while($row = $result->fetch_assoc()) { ?>
@@ -62,6 +63,7 @@
                         <td><?php echo $row["inizio_periodo"]; ?></td>
                         <td><?php echo $row["fine_periodo"]; ?></td>
                         <?php echo ($_SESSION['isadmin']) ? '<td>'.$row["nome"].' '.$row['cognome'].' (id = <b>'.$row['id_utente'].'</b>)</td>' : '' ?>
+                        <td><a href="http://localhost/Progetto/frontend/eliminaEntrata.php?idEntrata=<?php echo $row["id"];?>">Elimina</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
