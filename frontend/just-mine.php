@@ -4,13 +4,8 @@
     if (!$_SESSION['logged']) {
         header("location: http://localhost/Progetto/frontend/login.php");
     }
-    if ($_SESSION['isadmin']) {
-        $sqlEnt = "SELECT * FROM entrate";
-        $sqlUsc = "SELECT * FROM uscite";
-    } else {
-        $sqlEnt = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID'];
-        $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID'];
-    }
+    $sqlEnt = "SELECT * FROM entrate WHERE utente=".$_SESSION['userID'];
+    $sqlUsc = "SELECT * FROM uscite WHERE utente=".$_SESSION['userID'];
     $resEnt = $conn->query($sqlEnt);
     $totEntrate = 0;
     while ($row = $resEnt->fetch_assoc()) {
@@ -24,7 +19,7 @@
 ?>
     <div class="testa">
         <div class="title">
-            <h1>Home page</h1>
+            <h1>Just mine - <?php echo $_SESSION['user'] ?></h1>
         </div>
         <div class="greetings">
             <?php if ($_SESSION['logged']) { ?>
@@ -38,11 +33,6 @@
             <div class="back">
                 Uscite:<h3><?php echo $totUscite ?> €</h3>
             </div>
-            <?php if ($_SESSION['isadmin']) { ?>
-                <div class="btn">
-                    <a href="http://localhost/Progetto/frontend/just-mine.php">Just mine</a>
-                </div>
-            <?php } ?>
             <div class="insert">
                 Entrate:<h3><?php echo $totEntrate ?> €</h3>
             </div>
@@ -54,14 +44,6 @@
             <div class="btn">
                 <a href="http://localhost/Progetto/frontend/gestioneUscite.php">Gestione uscite</a>
             </div>
-            <?php if ($_SESSION['isadmin']) { ?>
-                <div class="btn">
-                    <a href="http://localhost/Progetto/frontend/gestioneprestiti.php">Gestione prestiti</a>
-                </div>
-                <div class="btn">
-                    <a href="http://localhost/Progetto/frontend/categorie.php">Categorie</a>
-                </div>
-            <?php } ?>
         </div>
     </div>
 <?php require_once '../frontend/footer.php'; ?>

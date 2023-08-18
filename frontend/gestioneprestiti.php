@@ -9,7 +9,9 @@
     $totale = 0;
     $res = $conn->query($sql);
     while ($r = $res->fetch_assoc()) {
-        $totale += $r['quanto'];
+        if ($r['restituzione'] == 0) {
+            $totale += $r['quanto'];
+        }
     }
 ?>
     <div class="testa">
