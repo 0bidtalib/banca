@@ -52,6 +52,7 @@
                 <form action="../frontend/byCategoria.php" method="get">
                     <h4 class="greetings">Selezione per categoria:</h4>
                     <select name="categoria">
+                        <option value="999">Tutti</option>
                         <?php
                             $sql_categorie = 'SELECT * FROM categorie';
                             $res_cat = $conn->query($sql_categorie);

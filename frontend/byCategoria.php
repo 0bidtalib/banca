@@ -4,16 +4,21 @@
     $sql_cat = 'SELECT * FROM categorie WHERE id='.$_GET['categoria'];
     $res_cat = $conn->query($sql_cat);
     $row_cat = $res_cat->fetch_assoc();
-    $sql = 'SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE uscite.categoria='.$_GET['categoria'];
+    if ($_GET['categoria'] == '999') {
+        $sql = 'SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id';
+    } else {
+        $sql = 'SELECT uscite.*, categorie.id AS cat_id, categorie.descrizione AS cat_desc FROM uscite INNER JOIN categorie ON uscite.categoria = categorie.id WHERE uscite.categoria='.$_GET['categoria'];
+    }
     if (!$_SESSION['isadmin']) {
-        $sql = $sql . ' AND utente='.$_SESSION['userID'];
+        $sql = $sql . ' AND uscite.utente='.$_SESSION['userID'];
     }
     if (strlen($_GET['filtroDataDal']) > 0) {
         $sql = $sql . ' AND uscite.data>="'.$_GET['filtroDataDal'].'"';
     }
     if (strlen($_GET['filtroDataAl']) > 0) {
-        $sql = $sql . ' AND data<="'.$_GET['filtroDataAl'].'"';
+        $sql = $sql . ' AND uscite.data<="'.$_GET['filtroDataAl'].'"';
     }
+    $sql .= ' ORDER BY uscite.data DESC';
     $res = $conn->query($sql);
     $tot = 0;
     while ($row_temp = $res->fetch_assoc()) {
@@ -41,8 +46,8 @@
             <br>
             <div class="table-upper">
                 <h3>Categoria:
-                <?php 
-                    echo $row_cat['key_word'];
+                <?php
+                echo ($_GET['categoria'] == '999') ? 'Tutti' : $row_cat['key_word'];
                     if (strlen($_GET['filtroDataDal'])>0) {
                         echo ' - dal: ' . $_GET['filtroDataDal'];
                     }
