@@ -1,2 +1,0 @@
-# banca
-gestionale entrate uscite.
